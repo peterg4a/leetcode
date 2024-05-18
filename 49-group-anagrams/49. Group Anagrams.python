@@ -7,7 +7,7 @@ class Solution(object):
         groups = {}
         for word in strs:
             sortedword = ''.join(sorted(word))
-            if sortedword in groups.keys():
+            if sortedword in groups:
                 groups[sortedword].append(word)
             else:
                 groups[sortedword] = [word]
