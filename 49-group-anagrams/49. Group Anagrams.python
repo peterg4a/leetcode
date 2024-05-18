@@ -1,0 +1,26 @@
+class Solution(object):
+    def groupAnagrams(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: List[List[str]]
+        """
+        groups = {}
+        for word in strs:
+            key = {}
+            for letter in word:
+                if letter in key.keys():
+                    key[letter] = key[letter] + 1
+                else:
+                    key[letter] = 1
+            h = hash(frozenset(key.items()))
+            if h in groups.keys():
+                groups[h].append(word)
+            else:
+                groups[h] = [word]
+        out = []
+        for i in groups.values():
+            print(i)
+        return groups.values()
+        
+            
+        
