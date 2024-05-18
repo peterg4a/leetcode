@@ -6,19 +6,10 @@ class Solution(object):
         """
         groups = {}
         for word in strs:
-            key = {}
-            for letter in word:
-                if letter in key.keys():
-                    key[letter] = key[letter] + 1
-                else:
-                    key[letter] = 1
-            h = hash(frozenset(key.items()))
-            if h in groups.keys():
-                groups[h].append(word)
+            sortedword = ''.join(sorted(word))
+            if sortedword in groups.keys():
+                groups[sortedword].append(word)
             else:
-                groups[h] = [word]
-        out = []
+                groups[sortedword] = [word]
         return groups.values()
-        
-            
         
