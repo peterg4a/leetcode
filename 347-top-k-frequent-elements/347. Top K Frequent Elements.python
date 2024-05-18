@@ -11,5 +11,4 @@ class Solution(object):
                 nummap[num] = nummap[num] + 1
             else:
                 nummap[num] = 1
-        sortedvalues = sorted(nummap, key=nummap.get, reverse=True)
-        return sortedvalues[0:k]
+        return sorted(nummap, key=nummap.get, reverse=True)[:k]
