@@ -18,8 +18,6 @@ class Solution(object):
             else:
                 groups[h] = [word]
         out = []
-        for i in groups.values():
-            print(i)
         return groups.values()
         
             
