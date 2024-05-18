@@ -1,0 +1,21 @@
+class Solution {
+    fun isAnagram(s: String, t: String): Boolean {
+        if (s.length != t.length) {
+            return false
+        }
+        val smap = mutableMapOf<Char, Int>()
+        for (letter in s) {
+            smap[letter] = (smap[letter] ?: 0) + 1
+        }
+        val tmap = mutableMapOf<Char, Int>()
+        for (letter in t) {
+            tmap[letter] = (tmap[letter] ?: 0) + 1
+        }
+        for (letter in smap.keys) {
+            if (tmap[letter] == null || smap[letter] != tmap[letter]) {
+                return false
+            }
+        }
+        return true
+    }
+}
