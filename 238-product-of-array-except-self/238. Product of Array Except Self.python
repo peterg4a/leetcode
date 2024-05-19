@@ -4,20 +4,13 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        ascending = [1]
-        descending = [1]
+        out = [1]
         for i in range(1, len(nums)):
-            ascending.append(ascending[i-1] * nums[i-1])
-            descending.append(descending[i-1] * nums[len(nums)-i])
-        print(ascending)
-        print(descending)
-        out = []
-        for i in range(len(nums)):
-            product = 1
-            if i < len(nums)-1:
-                product *= descending[len(nums)-i-1]
-            if i > 0:
-                product *= ascending[i]
-            out.append(product)
+            out.append(out[i-1] * nums[i-1])
+        print(out)
+        p = 1
+        for i in range(len(nums)-2, -1, -1):
+            p *= nums[i+1]
+            out[i] *= p
         return out
         
