@@ -4,12 +4,24 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[int]
         """
-        out = [1]
-        for i in range(1, len(nums)):
-            out.append(out[i-1] * nums[i-1])
-        p = 1
-        for i in range(len(nums)-2, -1, -1):
-            p *= nums[i+1]
-            out[i] *= p
+        ascending = []
+        a = 1
+        descending = [0 for i in range(len(nums))]
+        d = 1
+        for i in range(len(nums)):
+            a *= nums[i]
+            ascending.append(a)
+            d *= nums[len(nums)-1-i]
+            descending[len(nums)-1-i] = d
+        print(ascending)
+        print(descending)
+        out = []
+        for i in range(len(nums)):
+            product = 1
+            if i < len(nums)-1:
+                product *= descending[i+1]
+            if i > 0:
+                product *= ascending[i-1]
+            out.append(product)
         return out
         
