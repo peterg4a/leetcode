@@ -4,17 +4,16 @@ class Solution(object):
         :type s: str
         :rtype: bool
         """
-        letters = set(string.ascii_letters + string.digits)
         i = 0
         f = len(s) - 1
         while f > i:
-            if s[i] in letters and s[f] in letters:
+            if s[i].isalnum() and s[f].isalnum():
                 if s[i].lower() != s[f].lower():
                     return False
                 i += 1
                 f -= 1
-            elif s[i] not in letters:
+            elif not s[i].isalnum():
                 i += 1
-            elif s[f] not in letters:
+            elif not s[f].isalnum():
                 f -= 1
         return True
