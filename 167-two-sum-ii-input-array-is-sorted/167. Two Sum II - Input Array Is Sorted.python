@@ -5,11 +5,15 @@ class Solution(object):
         :type target: int
         :rtype: List[int]
         """
-        nummap = {}
-        for i in range(len(numbers)):
-            diff = target - numbers[i]
-            if diff in nummap:
-                return [nummap[diff]+1, i+1]
-            nummap[numbers[i]] = i
+        i = 0
+        j = len(numbers)-1
+        while j > i:
+            sum = numbers[i] + numbers[j]
+            if sum == target:
+                return [i+1, j+1]
+            elif sum > target:
+                j -= 1
+            elif sum < target:
+                i += 1
         return []
         
