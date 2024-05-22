@@ -6,7 +6,7 @@ class Solution {
             if (nummap.containsKey(diff)) {
                 return intArrayOf(nummap[diff]!!, i)
             }
-            nummap[nums[i]] = i
+            nummap[value] = i
         }
         return intArrayOf()
     }
