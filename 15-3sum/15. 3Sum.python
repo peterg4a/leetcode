@@ -20,6 +20,6 @@ class Solution(object):
                         l += 1
                 elif sum > 0:
                     r -= 1
-                elif sum < 0:
+                else:
                     l += 1
         return out
