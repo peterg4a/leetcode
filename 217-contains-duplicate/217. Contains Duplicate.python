@@ -4,10 +4,10 @@ class Solution(object):
         :type nums: List[int]
         :rtype: bool
         """
-        numset = set()
+        nummap = {}
         for num in nums:
-            if num in numset:
+            if num in nummap:
                 return True
-            numset.add(num)
+            nummap[num] = True
         return False
         
