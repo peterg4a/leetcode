@@ -7,8 +7,8 @@ class Solution(object):
         """
         nummap = {}
         for num in nums:
-            if num in nummap:
-                nummap[num] = nummap[num] + 1
-            else:
+            if num not in nummap:
                 nummap[num] = 1
+            else:
+                nummap[num] += 1
         return sorted(nummap, key=nummap.get, reverse=True)[:k]
