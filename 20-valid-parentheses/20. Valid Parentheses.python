@@ -9,7 +9,7 @@ class Solution(object):
         bmap = {'(': ')', '[': ']', '{': '}'}
         stack = []
         for l in s:
-            if l == '(' or l == '[' or l == '{':
+            if l in bmap:
                 stack.append(l)
             else:
                 if stack and l == bmap[stack[-1]]:
