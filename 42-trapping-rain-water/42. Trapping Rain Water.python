@@ -1,0 +1,30 @@
+class Solution(object):
+    def trap(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        #Find the indexes of peaks
+        i = 0
+        j = len(height)-1
+        baselines = [0 for a in range(len(height))]
+        baseline = 0
+        while i < j:
+            # print(i, j)
+            if min(height[i], height[j]) > baseline:
+                baseline = min(height[i], height[j])
+            if height[i] < height[j]:
+                baselines[i] = baseline
+                i += 1
+            else:
+                baselines[j] = baseline
+                j -= 1
+        # print(baselines)
+        tot = 0
+        for i, h in enumerate(height):
+            if baselines[i] - h > 0 :
+                tot += baselines[i] - h
+        return tot
+
+
+        
