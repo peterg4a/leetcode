@@ -5,20 +5,18 @@ class Solution(object):
         :rtype: List[List[int]]
         """
         out = []
-        ns = sorted(nums)
-        for i, num in enumerate(ns):
-            if i > len(nums)-3:
-                break
-            if i != 0 and num == ns[i-1]:
+        nums.sort()
+        for i, num in enumerate(nums):
+            if i != 0 and num == nums[i-1]:
                 continue
             l = i+1
             r = len(nums)-1
             while l < r:
-                sum = num + ns[l] + ns[r]
+                sum = num + nums[l] + nums[r]
                 if sum == 0:
-                    out.append([num, ns[l], ns[r]])
+                    out.append([num, nums[l], nums[r]])
                     l += 1
-                    while ns[l] == ns[l-1] and l < r:
+                    while nums[l] == nums[l-1] and l < r:
                         l += 1
                 elif sum > 0:
                     r -= 1
