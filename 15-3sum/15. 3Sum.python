@@ -4,7 +4,7 @@ class Solution(object):
         :type nums: List[int]
         :rtype: List[List[int]]
         """
-        out = set()
+        out = []
         nums.sort()
         for i, num in enumerate(nums):
             if i != 0 and num == nums[i-1]:
@@ -14,7 +14,7 @@ class Solution(object):
             while l < r:
                 sum = num + nums[l] + nums[r]
                 if sum == 0:
-                    out.add((num, nums[l], nums[r]))
+                    out.append([num, nums[l], nums[r]])
                     l += 1
                     while nums[l] == nums[l-1] and l < r:
                         l += 1
@@ -22,4 +22,4 @@ class Solution(object):
                     r -= 1
                 else:
                     l += 1
-        return list(out)
+        return out
