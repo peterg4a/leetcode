@@ -1,0 +1,22 @@
+class Solution(object):
+    def maxArea(self, height):
+        """
+        :type height: List[int]
+        :rtype: int
+        """
+        maxvol = 0
+        l = 0
+        r = len(height)-1
+        w = r-l
+        while l < r:
+            vol = min(height[l], height[r]) * w
+            # print(l, r, w, vol)
+            maxvol = max(maxvol, vol)
+            if height[l] < height[r]:
+                l += 1
+            else:
+                r -= 1
+            w -= 1
+        return maxvol
+
+        
