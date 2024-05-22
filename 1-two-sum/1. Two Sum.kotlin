@@ -1,8 +1,8 @@
 class Solution {
     fun twoSum(nums: IntArray, target: Int): IntArray {
         val nummap = mutableMapOf<Int, Int>()
-        for (i in nums.indices) {
-            val diff = target - nums[i]
+        for ((i, value) in nums.withIndex()) {
+            val diff = target - value
             if (nummap.containsKey(diff)) {
                 return intArrayOf(nummap[diff]!!, i)
             }
