@@ -4,7 +4,6 @@ class Solution(object):
         :type n: int
         :rtype: List[str]
         """
-        global helper
         def helper(opened, closed, comb, n):
             if opened == n and closed == n-1:
                 return [comb + ')']
