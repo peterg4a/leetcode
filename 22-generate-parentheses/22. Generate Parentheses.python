@@ -1,0 +1,21 @@
+class Solution(object):
+    def generateParenthesis(self, n):
+        """
+        :type n: int
+        :rtype: List[str]
+        """
+        global helper
+        def helper(opened, closed, comb, n):
+            if opened == n and closed == n-1:
+                return [comb + ')']
+            if opened < n and closed < opened:
+                return helper(opened+1, closed, comb+'(', n) + helper(opened, closed+1, comb+')', n)
+            elif opened < n:
+                return helper(opened+1, closed, comb+'(', n)
+            elif closed < opened:
+                return helper(opened, closed+1, comb+')', n)
+        return helper(1, 0, '(', n)
+        
+
+
+        
