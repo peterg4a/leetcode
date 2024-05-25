@@ -6,17 +6,12 @@ class Solution(object):
         :type speed: List[int]
         :rtype: int
         """
-        times = []
-        for i in range(0, len(position)):
-            times.append(float(target-position[i]) / speed[i])
-        # print(times)
-        pt = zip(position, times)
-        pt.sort(reverse = True)
-        # print(pt)
+        pairs = sorted(zip(position, speed), reverse = True)
         ans = 0
         largest = 0
-        for i in range(len(position)):
-            if pt[i][1] > largest:
-                largest = pt[i][1]
+        for pair in pairs:
+            time = float(target-pair[0]) / pair[1]
+            if time > largest:
+                largest = time
                 ans += 1
         return ans
