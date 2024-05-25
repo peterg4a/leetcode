@@ -9,8 +9,8 @@ class Solution(object):
         pairs = sorted(zip(position, speed), reverse = True)
         ans = 0
         largest = 0
-        for pair in pairs:
-            time = float(target-pair[0]) / pair[1]
+        for pos, spd in pairs:
+            time = float(target-pos) / spd
             if time > largest:
                 largest = time
                 ans += 1
