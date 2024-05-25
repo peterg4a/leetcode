@@ -1,0 +1,22 @@
+class Solution(object):
+    def carFleet(self, target, position, speed):
+        """
+        :type target: int
+        :type position: List[int]
+        :type speed: List[int]
+        :rtype: int
+        """
+        times = []
+        for i in range(0, len(position)):
+            times.append(float(target-position[i]) / speed[i])
+        # print(times)
+        pt = zip(position, times)
+        pt.sort(reverse = True)
+        # print(pt)
+        ans = 0
+        largest = 0
+        for i in range(len(position)):
+            if pt[i][1] > largest:
+                largest = pt[i][1]
+                ans += 1
+        return ans
