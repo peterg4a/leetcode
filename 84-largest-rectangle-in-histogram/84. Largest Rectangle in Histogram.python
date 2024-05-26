@@ -19,20 +19,18 @@ class Solution(object):
         # return maxa
         i=0
         n=len(heights)
-        stk=[]
+        stack=[]
         mx=0
         
         while i<n:
-            if not stk or heights[stk[-1]]<=heights[i]:
-                stk.append(i)
+            if not stack or heights[stack[-1]]<=heights[i]:
+                stack.append(i)
                 i+=1
-            elif stk:
-                top= heights[stk.pop()]
-                mx=max(mx, top*((i-stk[-1]-1) if stk else i))
+            elif stack:
+                mx=max(mx, heights[stack.pop()]*((i-stack[-1]-1) if stack else i))
                 
   
-        while stk:
-                top= heights[stk.pop()]
-                mx=max(mx, top*((i-stk[-1]-1) if stk else i))      
+        while stack:
+                mx=max(mx, heights[stack.pop()]*((i-stack[-1]-1) if stack else i))      
         return mx
         
