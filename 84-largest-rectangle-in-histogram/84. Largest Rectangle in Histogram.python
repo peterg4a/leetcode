@@ -7,16 +7,13 @@ class Solution(object):
         stack = []
         maxa = 0
         for i, h in enumerate(heights):
-            back = i
+            start = i
             while stack and h < stack[-1][1]:
                 back = stack[-1][0]
-                area = (i-stack[-1][0])*stack[-1][1]
-                if area > maxa:
-                    maxa = area
-                stack.pop()
-            stack.append([back, h])
+                index, height = stack.pop()
+                maxa = max(maxa, (i-index)*height)
+                start = index
+            stack.append((start, h))
         for i, h in stack:
-            area = (len(heights)-i)*h
-            if area > maxa:
-                maxa = area
+            maxa = max(maxa, (len(heights)-i)*h)
         return maxa
