@@ -17,19 +17,27 @@ class Solution(object):
         # for i, h in stack:
         #     maxa = max(maxa, (len(heights)-i)*h)
         # return maxa
-        stack = []
-        max_ = 0
-        for height in heights:
-            c = 1
-            while stack and stack[-1] > height:
-                h = stack.pop()
-                max_ = max(max_, h * c)
-                c += 1
-            for i in range(c):
-                stack.append(height)
-        c = 1
-        while stack:
-            max_ = max(max_, stack.pop()*c)
-            c += 1
-        return max_
+        i=0
+        n=len(heights)
+        stk=[]
+        mx=0
+        
+        while i<n:
+            if not stk or heights[stk[-1]]<=heights[i]:
+                stk.append(i)
+                i+=1
+            elif stk:
+            
+                    c=stk[-1]
+                    stk.pop()
+                    top= heights[c]
+                    mx=max(mx, top*((i-stk[-1]-1) if stk else i))
+                
+  
+        while stk:
+                c=stk[-1]
+                stk.pop()
+                top= heights[c]
+                mx=max(mx, top*((i-stk[-1]-1) if stk else i))      
+        return mx
         
