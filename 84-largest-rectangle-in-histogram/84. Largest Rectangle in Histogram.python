@@ -4,16 +4,32 @@ class Solution(object):
         :type heights: List[int]
         :rtype: int
         """
+        # stack = []
+        # maxa = 0
+        # for i, h in enumerate(heights):
+        #     start = i
+        #     while stack and h < stack[-1][1]:
+        #         back = stack[-1][0]
+        #         index, height = stack.pop()
+        #         maxa = max(maxa, (i-index)*height)
+        #         start = index
+        #     stack.append((start, h))
+        # for i, h in stack:
+        #     maxa = max(maxa, (len(heights)-i)*h)
+        # return maxa
         stack = []
-        maxa = 0
-        for i, h in enumerate(heights):
-            start = i
-            while stack and h < stack[-1][1]:
-                back = stack[-1][0]
-                index, height = stack.pop()
-                maxa = max(maxa, (i-index)*height)
-                start = index
-            stack.append((start, h))
-        for i, h in stack:
-            maxa = max(maxa, (len(heights)-i)*h)
-        return maxa
+        max_ = 0
+        for height in heights:
+            c = 1
+            while stack and stack[-1] > height:
+                h = stack.pop()
+                max_ = max(max_, h * c)
+                c += 1
+            for i in range(c):
+                stack.append(height)
+        c = 1
+        while stack:
+            max_ = max(max_, stack.pop()*c)
+            c += 1
+        return max_
+        
