@@ -4,14 +4,6 @@ class Solution(object):
         :type nums: List[List[int]]
         :rtype: int
         """
-        # nonprimes = set()
-        # for i in range(2, 4000001):
-        #     if i not in nonprimes:
-        #         m = 2
-        #         while i * m <= 4000000:
-        #             nonprimes.add(i*m)
-        #             m += 1
-        # print(nonprimes)
         def isprime(num):
             if num == 1:
                 return False
@@ -24,11 +16,9 @@ class Solution(object):
             return True
         largest = 0
         for i in range(len(nums)):
-            num = nums[i][i]
-            if num > largest and isprime(num):
-                largest = num
-            num = nums[i][-i-1]
-            if num > largest and isprime(num):
-                largest = num
+            if nums[i][i] > largest and isprime(nums[i][i]):
+                largest = nums[i][i]
+            if nums[i][-i-1] > largest and isprime(nums[i][-i-1]):
+                largest = nums[i][-i-1]
         return largest
         
