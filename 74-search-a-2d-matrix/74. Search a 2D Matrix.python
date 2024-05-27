@@ -5,27 +5,31 @@ class Solution(object):
         :type target: int
         :rtype: bool
         """
-        u = 0
-        d = len(matrix)-1
-        length = len(matrix[0])-1
-        while u <= d:
-            mid = (u+d)/2
-            print(mid)
-            if matrix[mid][0] <= target and target <= matrix[mid][length]:
-                l = 0
-                r = length
-                while l <= r:
-                    m = (l+r)/2
-                    if matrix[mid][m] == target:
-                        return True
-                    elif matrix[mid][m] < target:
-                        l = m+1
-                    else:
-                        r = m-1
-                return False
-            elif target < matrix[mid][0]:
-                d = mid-1
-            else:
-                u = mid+1
+        # u = 0
+        # d = len(matrix)-1
+        # length = len(matrix[0])-1
+        # while u <= d:
+        #     mid = (u+d)/2
+        #     print(mid)
+        #     if matrix[mid][0] <= target and target <= matrix[mid][length]:
+        #         l = 0
+        #         r = length
+        #         while l <= r:
+        #             m = (l+r)/2
+        #             if matrix[mid][m] == target:
+        #                 return True
+        #             elif matrix[mid][m] < target:
+        #                 l = m+1
+        #             else:
+        #                 r = m-1
+        #         return False
+        #     elif target < matrix[mid][0]:
+        #         d = mid-1
+        #     else:
+        #         u = mid+1
+        # return False
+        for i in matrix:
+            if target in i:
+                return True
         return False
         
