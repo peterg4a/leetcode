@@ -15,10 +15,10 @@ class Solution(object):
         def isprime(num):
             if num == 1:
                 return False
-            elif num != 2 and num != 3:
-                if num % 2 == 0 or num % 3 == 0:
-                    return False
-            for i in range(2, num):
+            elif num != 2 and num % 2 == 0:
+                return False
+            sqrt = int(math.sqrt(num))
+            for i in range(3, sqrt+1, 2):
                 if num % i == 0:
                     return False
             return True
