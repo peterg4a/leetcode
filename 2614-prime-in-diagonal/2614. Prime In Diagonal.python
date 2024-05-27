@@ -16,9 +16,11 @@ class Solution(object):
             return True
         largest = 0
         for i in range(len(nums)):
-            if nums[i][i] > largest and isprime(nums[i][i]):
-                largest = nums[i][i]
-            if nums[i][-i-1] > largest and isprime(nums[i][-i-1]):
-                largest = nums[i][-i-1]
+            num = nums[i][i]
+            if num > largest and isprime(num):
+                largest = num
+            num = nums[i][-i-1]
+            if num > largest and isprime(num):
+                largest = num
         return largest
         
