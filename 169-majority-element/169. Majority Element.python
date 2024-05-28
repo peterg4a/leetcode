@@ -4,17 +4,21 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        map = {}
-        for i in nums:
-            if i in map:
-                map[i] += 1
+        nums.sort()
+        curr = -1
+        cnt = 0
+        maxcnt = 0
+        maxnum = -1
+        for num in nums:
+            if num != curr:
+                if cnt > maxcnt:
+                    maxcnt = cnt
+                    maxnum = curr
+                curr = num
+                cnt = 1
             else:
-                map[i] = 1
-        maxval = -1
-        max = 0
-        for i in map:
-            if map[i] > max:
-                max = map[i]
-                maxval = i
-
-        return maxval
+                cnt += 1
+            # print(curr, cnt, maxcnt, maxnum)
+        if cnt > maxcnt:
+            return curr
+        return maxnum
