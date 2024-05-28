@@ -1,0 +1,25 @@
+class Solution(object):
+    def minEatingSpeed(self, piles, h):
+        """
+        :type piles: List[int]
+        :type h: int
+        :rtype: int
+        """
+        mx = int(10e9)
+        mn = 0
+        while mn+1 < mx:
+            k = (mx+mn)/2
+            print(mn, mx, k)
+            hguess= 0
+            #simulation
+            cont = True
+            for pile in piles:
+                hguess += ceil(float(pile)/k)
+                if hguess > h:
+                    mn = k
+                    cont = False
+                    break
+            if cont:
+                mx = k
+        return mx
+            
