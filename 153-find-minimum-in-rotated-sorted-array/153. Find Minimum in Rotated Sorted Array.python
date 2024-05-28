@@ -4,4 +4,17 @@ class Solution(object):
         :type nums: List[int]
         :rtype: int
         """
-        return min(nums)
+        if nums[-1] >= nums[0]:
+            return nums[0]
+        mn = 0
+        mx = len(nums)-1
+        while mn < mx:
+            mid = (mn+mx)/2
+            # print(mn, mid, mx)
+            if nums[mid] < nums[mx]:
+                mx = mid
+            else:
+                mn = mid
+            if mn + 1 == mx:
+                return nums[mx]
+        return nums[mx]
