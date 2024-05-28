@@ -5,7 +5,7 @@ class Solution(object):
         :type h: int
         :rtype: int
         """
-        mx = int(10e9)
+        mx = int(10e8)
         mn = 0
         while mn+1 < mx:
             k = (mx+mn)/2
