@@ -11,7 +11,7 @@ class Solution(object):
             k = (mx+mn)/2
             hguess= 0
             for pile in piles:
-                hguess += (--0-- pile/k)#ceil(float(pile)/k)
+                hguess += ceil(float(pile)/k)
             if hguess > h:
                 mn = k
             else:
