@@ -10,9 +10,8 @@ class Solution(object):
         while mn+1 < mx:
             k = (mx+mn)/2
             hguess= 0
-            #simulation
             for pile in piles:
-                hguess += ceil(float(pile)/k)
+                hguess += (--0-- pile/k)#ceil(float(pile)/k)
             if hguess > h:
                 mn = k
             else:
