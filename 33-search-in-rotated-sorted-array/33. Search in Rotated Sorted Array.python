@@ -9,17 +9,18 @@ class Solution(object):
         r = len(nums)-1
         while l <= r:
             m = (l+r)//2
+            num = nums[m]
             # print(l, m, r)
-            if nums[m] == target:
+            if num == target:
                 return m
             #if nums[m] and target are on the same side
-            if (nums[m] <= nums[r] and target <= nums[r]) or (nums[m] >= nums[l] and target >= nums[l]):
-                if nums[m] > target:
+            if (num <= nums[r] and target <= nums[r]) or (num >= nums[l] and target >= nums[l]):
+                if num > target:
                     r = m-1
                 else:
                     l = m+1
             else:
-                if nums[m] > target:
+                if num > target:
                     l = m+1
                 else:
                     r = m-1
