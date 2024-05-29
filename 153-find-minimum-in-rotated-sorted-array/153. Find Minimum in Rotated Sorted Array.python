@@ -6,15 +6,15 @@ class Solution(object):
         """
         if nums[-1] >= nums[0]:
             return nums[0]
-        mn = 0
-        mx = len(nums)-1
-        while mn < mx:
-            mid = (mn+mx)/2
+        l = 0
+        r = len(nums)-1
+        while l+1 < r:
+            m = (l+r)/2
             # print(mn, mid, mx)
-            if nums[mid] < nums[mx]:
-                mx = mid
+            if nums[m] >= nums[l]:
+                l = m
             else:
-                mn = mid
-            if mn + 1 == mx:
-                return nums[mx]
-        return nums[mx]
+                r = m
+            # else:
+            #     if nums[m] > nums[l]
+        return nums[r]
