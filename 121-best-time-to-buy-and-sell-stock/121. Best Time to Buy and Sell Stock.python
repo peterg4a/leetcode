@@ -6,9 +6,9 @@ class Solution(object):
         """
         lowest = prices[0]
         maxprofit = 0
-        for i in range(len(prices)):
-            if prices[i] < lowest:
-                lowest = prices[i]
-            if prices[i] - lowest > maxprofit:
-                maxprofit = prices[i] - lowest
+        for p in prices:
+            if p < lowest:
+                lowest = p
+            if p - lowest > maxprofit:
+                maxprofit = p - lowest
         return maxprofit
