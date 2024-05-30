@@ -1,29 +1,38 @@
 class TimeMap(object):
 
     def __init__(self):
-        self.timeMap ={}
+        self.map = {}
 
     def set(self, key, value, timestamp):
-        if key not in self.timeMap:
-            self.timeMap[key] =[]
-        self.timeMap[key].append([value,timestamp])
+        """
+        :type key: str
+        :type value: str
+        :type timestamp: int
+        :rtype: None
+        """
+        if key in self.map:
+            self.map[key].append((timestamp, value))
+        else:
+            self.map[key] = [(timestamp, value)]
         
 
     def get(self, key, timestamp):
-        result=''
-        values = self.timeMap.get(key,[])
-
-        l,r=0,len(values) -1
-        while l<=r:
+        """
+        :type key: str
+        :type timestamp: int
+        :rtype: str
+        """
+        res = ''
+        pairs = self.map.get(key, [])
+        l, r = 0, len(pairs)-1
+        while l <= r:
             m = (l+r)//2
-        
-            if values[m][1] <=timestamp:
+            if pairs[m][0] <= timestamp:
+                res = pairs[m][1]
                 l = m+1
-                result = values[m][0]
             else:
-                r=m-1
-    
-        return result
+                r = m-1
+        return res
         
 
 
