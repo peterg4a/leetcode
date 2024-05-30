@@ -9,6 +9,6 @@ class Solution(object):
         for p in prices:
             if p < lowest:
                 lowest = p
-            if p - lowest > maxprofit:
+            elif p - lowest > maxprofit:
                 maxprofit = p - lowest
         return maxprofit
