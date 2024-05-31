@@ -8,10 +8,8 @@ class Solution(object):
         l = 0
         largest = 0
         for r in range(len(s)):
-            print(l, r)
             if s[r] in letters:
                 while s[l] != s[r]:
-                    print(s[l], letters)
                     letters.remove(s[l])
                     l += 1
                 l += 1
