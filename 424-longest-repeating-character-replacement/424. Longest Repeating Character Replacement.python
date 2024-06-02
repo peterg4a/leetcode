@@ -6,20 +6,19 @@ class Solution(object):
         :rtype: int
         """
         longest = 0
-        for letter in string.ascii_uppercase:
-            notletter = 0
-            i = 0
-            for f in range(len(s)):
-                if s[f] != letter:
-                    notletter += 1
-                if notletter > k:
-                    while s[i] == letter:
-                        i += 1
-                    i += 1
-                    notletter = k
-                if f-i > longest:
-                    longest = f-i
-        return longest+1
+        freq = {}
+
+        maxf = 0
+        i = 0
+        for f in range(len(s)):
+            freq[s[f]] = freq.get(s[f], 0) + 1
+            maxf = max(maxf, freq[s[f]])
+            while f-i+1 - maxf > k:
+                freq[s[i]] -= 1
+                i += 1
+            longest = max(longest, f-i+1)
+        return longest
+
                 
                 
                 
