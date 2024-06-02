@@ -12,11 +12,13 @@ class Solution(object):
         i = 0
         for f in range(len(s)):
             freq[s[f]] = freq.get(s[f], 0) + 1
-            maxf = max(maxf, freq[s[f]])
+            if freq[s[f]] > maxf:
+                maxf = freq[s[f]]
             while f-i+1 - maxf > k:
                 freq[s[i]] -= 1
                 i += 1
-            longest = max(longest, f-i+1)
+            if f-i+1 > longest:
+                longest = f-i+1
         return longest
 
                 
