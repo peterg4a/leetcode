@@ -5,21 +5,16 @@ class Solution(object):
         :type k: int
         :rtype: int
         """
-        longest = 0
-        freq = {}
-
         maxf = 0
+        freq = {}
         i = 0
         for f in range(len(s)):
             freq[s[f]] = freq.get(s[f], 0) + 1
-            if freq[s[f]] > maxf:
-                maxf = freq[s[f]]
-            while f-i+1 - maxf > k:
+            maxf = max(maxf, freq[s[f]])
+            if f-i+1 - maxf > k:
                 freq[s[i]] -= 1
                 i += 1
-            if f-i+1 > longest:
-                longest = f-i+1
-        return longest
+        return f-i+1
 
                 
                 
