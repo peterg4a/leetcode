@@ -1,0 +1,25 @@
+class Solution(object):
+    def characterReplacement(self, s, k):
+        """
+        :type s: str
+        :type k: int
+        :rtype: int
+        """
+        longest = 0
+        for letter in string.ascii_uppercase:
+            notletter = 0
+            i = 0
+            for f in range(len(s)):
+                if s[f] != letter:
+                    notletter += 1
+                if notletter > k:
+                    while s[i] == letter:
+                        i += 1
+                    i += 1
+                    notletter = k
+                if f-i > longest:
+                    longest = f-i
+        return longest+1
+                
+                
+                
