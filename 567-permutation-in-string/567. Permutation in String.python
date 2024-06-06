@@ -1,0 +1,34 @@
+class Solution(object):
+    def checkInclusion(self, s1, s2):
+        """
+        :type s1: str
+        :type s2: str
+        :rtype: bool
+        """
+        kmap = {}
+        for letter in s1:
+            kmap[letter] = kmap.get(letter, 0) + 1
+        print(kmap)
+        i = 0
+        pmap = {}
+        for f, letter in enumerate(s2):
+            # print(letter)
+            if pmap.get(letter, 0) < kmap.get(letter, 0):
+                # print(1)
+                pmap[letter] = pmap.get(letter, 0)+1
+                if pmap == kmap:
+                    return True
+            elif letter in kmap:
+                # print(2)
+                while s2[i] != letter:
+                    pmap[s2[i]] = pmap.get(s2[i], 1)-1
+                    if pmap[s2[i]] == 0:
+                        del pmap[s2[i]]
+                    i += 1
+                i += 1
+            else:
+                # print(3)
+                pmap.clear()
+                i = f+1
+            # print(pmap)
+        return False
