@@ -10,34 +10,18 @@ class Solution(object):
         :type n: int
         :rtype: ListNode
         """
-        # cnt = n
-        # curr = head
-        # temp = None
-        # while curr.next:
-        #     curr = curr.next
-        #     cnt -= 1
-        #     if cnt == 0:
-        #         temp = head
-        #         cnt -= 1
-        #     elif cnt < 0:
-        #         temp = temp.next
-        # if not temp:    #removing head node
-        #     return head.next
-        # temp.next = temp.next.next
-        # return head
-
-        dummy = ListNode(0)
-        dummy.next = head
-        first = dummy
-        second = dummy
-        for _ in range (n+1):
-            first = first.next
-        if first ==None:
+        cnt = n
+        curr = head
+        temp = None
+        while curr.next:
+            curr = curr.next
+            cnt -= 1
+            if cnt == 0:
+                temp = head
+                cnt -= 1
+            elif cnt < 0:
+                temp = temp.next
+        if not temp:    #removing head node
             return head.next
-        # loop ends when first and second have exactly n space between them
-        while first!= None:
-            first = first.next
-            second = second.next
-        # loop ends when first is at the end, then second is exactly n nodes behind
-        second.next = second.next.next
+        temp.next = temp.next.next
         return head
