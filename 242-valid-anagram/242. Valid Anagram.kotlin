@@ -11,6 +11,11 @@ class Solution {
         for (letter in t) {
             tmap[letter] = (tmap[letter] ?: 0) + 1
         }
-        return smap == tmap
+        for (letter in smap.keys) {
+            if (tmap[letter] == null || smap[letter] != tmap[letter]) {
+                return false
+            }
+        }
+        return true
     }
 }
