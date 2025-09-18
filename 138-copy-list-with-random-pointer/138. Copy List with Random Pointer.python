@@ -13,32 +13,15 @@ class Solution(object):
         :type head: Node
         :rtype: Node
         """
-        if not head:
-            return None
-        #copy without random pointers first
-        old_head = head
-        new_head = Node(old_head.val)
-        old_cur = old_head
-        new_cur = new_head
-        old_to_new = {None : None, old_head : new_head}
-        while old_cur.next:
-            old_next = old_cur.next
-            new_next = Node(old_next.val)
-            new_cur.next = new_next
-
-            old_cur = old_next
-            new_cur = new_next
-            old_to_new[old_cur] = new_cur
-
-        #now copy random pointers over
-        old_cur = old_head
-        new_cur = new_head
-        while old_cur:
-            old_random = old_cur.random
-            new_random = old_to_new[old_random]
-            new_cur.random = new_random
-
-            old_cur = old_cur.next
-            new_cur = new_cur.next
-        
-        return new_head
+        old_to_new = {None:None}
+        cur = head
+        while cur:
+            old_to_new[cur] = Node(cur.val)
+            cur = cur.next
+        cur = head
+        while cur:
+            new = old_to_new[cur]
+            new.next = old_to_new[cur.next]
+            new.random = old_to_new[cur.random]
+            cur = cur.next
+        return old_to_new[head]
