@@ -1,0 +1,35 @@
+# Definition for singly-linked list.
+# class ListNode(object):
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution(object):
+    def addTwoNumbers(self, l1, l2):
+        """
+        :type l1: Optional[ListNode]
+        :type l2: Optional[ListNode]
+        :rtype: Optional[ListNode]
+        """
+        cur1 = l1
+        cur2 = l2
+        sum_head = ListNode()
+        cur_sum = sum_head
+        carry = 0
+        prev = None
+        while cur1 or cur2 or carry:
+            num1 = 0 if not cur1 else cur1.val
+            num2 = 0 if not cur2 else cur2.val
+            sum = num1 + num2 + (1 if carry else 0)
+            carry = 1 if sum >= 10 else 0
+            sum = sum % 10
+            cur_sum.val = sum
+            cur_sum.next = ListNode()
+            prev = cur_sum
+            cur_sum = cur_sum.next
+            cur1 = None if not cur1 else cur1.next
+            cur2 = None if not cur2 else cur2.next
+            
+        if cur_sum.val == 0:
+            prev.next = None
+            del cur_sum
+        return sum_head
